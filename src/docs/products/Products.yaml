@@ -1,0 +1,185 @@
+paths:
+  /api/products/:
+    get:
+      summary: Obtiene todos los productos
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Los productos fueron obtenidos correctamente
+          content:
+            applications/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        "500":
+          description: No se pudo obtener los productos
+
+    post:
+      summary: Agrega un producto a la base de datos
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/addProduct'
+      responses:
+        "200":
+          description: El producto fue agregado exitosamente
+        "400":
+          description: No tiene permisos para ejecutar esta accion
+        "500":
+          description: No se pudo agregar el producto
+
+  /api/products/{pid}:
+    get:
+      summary: Obtiene un producto por su ID
+      tags:
+        - Products
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: Id del producto que desea obtener
+        schema:
+          $type: String
+      responses: 
+        "200":
+          description: El producto fue obtenido exitosamente
+          content:
+            applications/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        "500":
+          description: No se pudo obtener el productos
+
+    put:
+      summary: Actualiza un producto
+      tags:
+        - Products
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: Id del producto que desea obtener
+        schema:
+          $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/addProduct'
+      responses: 
+        "200":
+          description: El producto fue actualizado exitosamente
+        "500":
+          description: No se pudo actualizar el producto
+    
+    delete:
+      summary: Elimina un produtco
+      tags:
+        - Products
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: Id del producto que desea obtener
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: El producto fue eliminado correctamente
+        "400":
+          description: No tiene permisos para ejecutar esta accion
+        "500":
+          description: No se pudo eliminar el producto
+
+components: 
+  schemas: 
+    Product:
+      type: object
+      properties: 
+        _id:
+          type: string
+          description: Id autogenerado por Mongo.
+        title:
+          type: string
+          description: Titulo del producto.
+        description:
+          type: string
+          description: Descripcion del producto.
+        code:
+          type: Number
+          description: El code del producto, este campo es único y no puede repetirse
+        price:
+          type: Number
+          description: El precio del producto
+        status:
+          type: string
+          description: Determinara el estado del producto
+        stock:
+          type: Number
+          description: Stock disponible del producto
+        category:
+          type: string
+          description: Categoria a la que pertenece el producto
+        thumbnail:
+          type: string
+          description: link IMG del producto
+        owner:
+          type: string
+          description: Email del aquel que haya creado el producto o "admin"
+      example: 
+        _id: ObjectId("asETDFG1234jnuhg8fd.214asFSDE3")
+        title: Producto
+        description: Esta es la descripcion del producto
+        code:  553
+        price: 1000
+        status: 'true'
+        stock: 15
+        category: Libros
+        thumbnail: linkDeEjemplo
+        owner: admin
+  requestBodies:
+    addProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Titulo del producto.
+        description:
+          type: string
+          description: Descripcion del producto.
+        code:
+          type: Number
+          description: El code del producto, este campo es único y no puede repetirse
+        price:
+          type: Number
+          description: El precio del producto
+        status:
+          type: string
+          description: Determinara el estado del producto
+        stock:
+          type: Number
+          description: Stock disponible del producto
+        category:
+          type: string
+          description: Categoria a la que pertenece el producto
+        thumbnail:
+          type: string
+          description: link IMG del producto
+      example: 
+        title: Producto
+        description: Esta es la descripcion del producto
+        code:  553
+        price: 1000
+        status: 'true'
+        stock: 15
+        category: Libros
+        thumbnail: linkDeEjemplo

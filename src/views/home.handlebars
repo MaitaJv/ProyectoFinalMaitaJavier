@@ -1,0 +1,48 @@
+<div>
+    <div class="header">
+        <h2>Bienvenido {{username}}</h2>
+
+        <form action="../auth/logout" method="post">
+            <button id="logout" class="btnInverted">Cerrar sesion</button>
+        </form>
+
+        <form action="../carts/{{cart}}" method="get">
+            <button id="logout" class="btnInverted">Carrito</button>
+        </form>
+    </div>
+
+    <div class="titleContainer">
+        <h2>Todos los Productos</h2>
+    </div>
+    
+    <div class="productsContainer">
+        {{#each productos}}
+            <div class="card">
+                <img src="/public/media/kennyProduct.png" alt="producto" height="150px">
+                <div class="dataContainer">
+                    <h3>{{this.title}}</h3>
+                    <div class="description">
+                        <p>{{this.description}}</p>
+                        <p>Categoria: {{this.category}}</p>
+                        <p>Stock: {{this.stock}}</p>
+                    </div>
+                </div>
+                <form action="../api/carts/{{cart}}/product/{{this._id}}" method="post">
+                    <button type="submit">agragar al carrito</button>
+                </form>
+            </div>
+        {{/each}}
+    </div>
+
+    <div class="pagination">
+        {{#if hasPrevPage}}
+            <a href="/products?page={{prevPage}}&&limit={{limit}}" class="center"><button>Anterior</button></a>
+        {{/if}}
+        <p class="page">{{page}}</p>
+        {{#if hasNextPage}}
+            <a href="/products?page={{nextPage}}&&limit={{limit}}" class="center"><button>Siguiente</button></a>
+        {{/if}}
+    </div>
+</div>
+
+<script src="/public/js/home.js"></script>

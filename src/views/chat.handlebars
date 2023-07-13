@@ -1,0 +1,19 @@
+<div>
+    <h2>ingrese su nombre</h2>
+    <form>
+        <label>email</label> <br>
+        <input type="text" name="user" id="user"> <br>
+
+        <label>Mensaje</label> <br>
+        <input type="text" name="message" id="mensaje"> <br>
+
+        <input type="submit" id="submitMsg">
+    </form>
+
+    <h2>Chat</h2>
+
+    <div id="chatContainer"></div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/public/js/chat.js"></script>

@@ -1,0 +1,237 @@
+paths:
+  /api/carts/:
+    post:
+      summary: Crea un carrito
+      tags:
+        - Carts
+      responses:
+        "200":
+          description: El carrito se creo correctamente
+        "500":
+          description: No se pudo creer el carrito
+
+  /api/carts/{cid}:
+    get:
+      summary: Obtiene un carrito con sus productos
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: Id del carrito que desea obtener
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: El carrito se obtuvo correctamente
+          content:
+            aplications/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+        "500":
+          description: No se pudo obtener el carrito
+
+    delete:
+      summary: Se eliminan todos los productos dentro del carrito  seleccionado
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: Id del carrito que desea eliminar
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: El carrito se elimino correctamente
+        "500":
+          description: No se pudo eliminar el carrito
+
+    put:
+      summary: Se remplazan todos los productos del carrito, recibido por params, por un array que se obtendra por req.body
+      tags:
+      - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: Id del carrito que desea obtener
+        schema:
+          $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/uploadCart'
+      responses: 
+        "200":
+          description: El carrito fue remplazado correctamente
+        "500":
+          description: No se pudo actualizar el carrito
+
+  /api/carts/{cid}/product/{pid}:
+    post:
+      summary: Agrega un producto al carrito
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: Id del carrito al que se desea agregar un producto
+        schema:
+          $type: String
+      - name: pid
+        in: path
+        required: true
+        description: Id del producto que desea agregar
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: El producto se agrego al carrito correctamente
+        "500":
+          description: No se pudo agregar el producto al carrito
+
+    put:
+      summary: Actualiza un producto del carrito
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: Id del carrito al que se desea actualizar un producto
+        schema:
+          $type: String
+      - name: pid
+        in: path
+        required: true
+        description: Id del producto que desea actualizar
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: El producto se actualizo del carrito correctamente
+        "500":
+          description: No se pudo actualizar el producto del carrito
+
+    delete:
+      summary: Elimina un producto del carrito
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: Id del carrito al que se desea eliminar un producto
+        schema:
+          $type: String
+      - name: pid
+        in: path
+        required: true
+        description: Id del producto que desea eliminar
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: El producto se elimino del carrito correctamente
+        "500":
+          description: No se pudo eliminar el producto del carrito
+
+  /api/carts/{cid}/purchase:
+    get:
+      summary: Se genera y se recibe un ticket de compra
+      tags:
+      - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: Id del carrito del que se desea generar la compra
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: La compra se proceso de manera exitosa
+          content:
+            aplications/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ticket'
+        "500":
+          description: No se pudo realizar el pago
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Id autogenerado por Mongo.
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              pid:
+                type: string
+                description: id Del producto
+              quantity:
+                type: Number
+                description: cantidad de producto del mismo tipo
+          description: Lista de etiquetas
+      example:
+        _id: ObjectId("asETDFG1234jnuhg8fd.214asFSDE3")
+        products:
+          - pid: 64010a6571f4e310587dbb00
+            quantity: 2
+          - pid: 64029485d2af530810fc3a47
+            quantity: 2
+
+    Ticket:
+      type: object
+      properties:
+        code:
+          type: Number
+          description: codigo de compra
+        purchase_datetime:
+          type: String
+          description: Hora registrada en el momento de la compra
+        amount:
+          type: Number
+          description: Total a pagar
+        purchaser:
+          type: String
+          description: Email del cliente
+      example:
+        code: 1080
+        purchase_datetime: "30/5/2023"
+        amount: 1500
+        purchaser: cliente@gmail.com
+
+  requestBodies:
+    uploadCart:
+      type: array
+      items:
+        type: object
+        properties:
+          pid:
+            type: string
+            description: id Del producto
+          quantity:
+            type: Number
+            description: cantidad de producto del mismo tipo
+      description: Lista de etiquetas
+      example:
+        - pid: 64010a6571f4e310587dbb00
+          quantity: 2
+        - pid: 64029485d2af530810fc3a47
+          quantity: 2
