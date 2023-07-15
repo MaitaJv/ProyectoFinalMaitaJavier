@@ -111,4 +111,12 @@ export class MongoUserManager{
             console.log(error)
         }
     }
+
+    async deleteUser(email){
+        try {
+            await UserModel.findOneAndDelete({email: email})
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

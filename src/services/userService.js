@@ -72,6 +72,13 @@ class UserService {
             console.log(error)
         }
     }
+    async deleteUser(email){
+        try {
+            await mongoUserManager.deleteUser(email)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 export default UserService

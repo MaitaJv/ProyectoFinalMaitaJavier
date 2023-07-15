@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken'
 import { request } from "express"
 import { createHash, isValidPassword } from "../ultis/bcrypt.js"
+import { createTransport } from 'nodemailer'
+import moment from 'moment'
 import UserService from "../services/userService.js"
 import config from '../config/env.js';
 
@@ -22,6 +24,56 @@ class UserController{
             });
             // console.log(saveUsers)
             res.send({status: "ok", data: saveUsers})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    deleteUser = async (req = request, res) => {
+        try {
+            let user = await userService.getUsers()
+            user.forEach(async user => {
+                try {
+                    console.log("user.last_connection: ", user.last_connection, "TypeOf: ", typeof(user.last_connection))
+
+                    let LC = user.last_connection.split(" ").join("")
+                    let LC2 = moment(LC)
+                    let now = moment().format("YYYY MM DD")
+                    let now2 = moment(now.split(" ").join(""))
+
+                    let dif = now2.diff(LC2, 'days')
+                    console.log(`LC: ${LC2}; now: ${now2}`)
+                    console.log('diferencia: ', dif)
+                    console.log('User.email: : ', user.email)
+                    if (dif > 2) {
+                        await userService.deleteUser(user.email)
+
+                        const transport = createTransport({
+                            service: 'gmail',
+                            port: 578,
+                            auth: {
+                                user: config.testMail,
+                                pass: config.testMailPass
+                            }
+                        })
+
+                        let result = await transport.sendMail({
+                            from:'Servicio de Node <javiermaita22@gmail.com>',
+                            to: user.email,
+                            subject: 'Su cuenta fue eliminada',
+                            html: `
+                            <div>
+                                <h1>Su cuenta fue eliminada por inactividad</h1>
+                            </div>`
+                        })
+
+                        console.log(result)
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            })
+            res.send({status: "ok"})
         } catch (error) {
             console.log(error)
         }
