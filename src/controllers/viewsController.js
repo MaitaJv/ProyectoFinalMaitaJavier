@@ -68,6 +68,28 @@ class ViewsController {
     chat = (req = request, res) => {
         res.render('chat')
     }
+
+    userMonitoring = async (req = request, res) => {
+        try {
+            let users = await userService.getUsers()
+            let saveUsers = []
+            users.forEach(user => {
+                saveUsers.push({
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    email: user.email,
+                    roll: user.roll
+                })
+            });
+            console.log(saveUsers);
+            let data = {
+                usuarios: saveUsers
+            }
+            res.render('userMonitoring', data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 export default ViewsController

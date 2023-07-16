@@ -126,3 +126,33 @@ html{
     display: flex;
     justify-content: center;
 }
+
+.userContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.userHeaders{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.userRow{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.nameContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.rollContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleteContainer{
+    display: flex;
+    justify-content: center;
+}
