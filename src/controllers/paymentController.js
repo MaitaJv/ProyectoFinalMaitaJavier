@@ -21,10 +21,10 @@ class PaymentController{
         
             const service = new PaymentService()
             let result = await service.createPaymentIntent(paymentIntentInfo)
-            console.log(result)
+            req.logger.info(result)
             res.send({status: 'success',payload: result})
         } catch (error) {
-            console.log(error);
+            req.logger.error(error);
         }
     }
 }

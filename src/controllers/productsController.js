@@ -11,7 +11,7 @@ class ProductsController {
 
             res.send(data.docs)
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -23,7 +23,7 @@ class ProductsController {
 
             pid ? res.send(productById) : res.send(allProducts)
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -35,7 +35,7 @@ class ProductsController {
 
             res.send(product)
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -49,7 +49,7 @@ class ProductsController {
 
             res.send({aviso: "producto actualizado"})
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
             res.send({aviso: "Error"})
         }
     }
@@ -67,7 +67,7 @@ class ProductsController {
 
             res.send({error: "No tiene permisos"})
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 }

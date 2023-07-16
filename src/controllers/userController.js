@@ -22,10 +22,9 @@ class UserController{
                     roll: user.roll
                 })
             });
-            // console.log(saveUsers)
             res.send({status: "ok", data: saveUsers})
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -35,7 +34,7 @@ class UserController{
             await userService.deleteUser(uemail)
             res.send({status: "ok"})
         } catch (error) {
-            console.log(error);
+            req.logger.error(error);
         }
     }
 
@@ -44,7 +43,7 @@ class UserController{
             let users = await userService.getUsers()
             users.forEach(async user => {
                 try {
-                    console.log("user.last_connection: ", user.last_connection, "TypeOf: ", typeof(user.last_connection))
+                    req.logger.info("user.last_connection: ", user.last_connection, "TypeOf: ", typeof(user.last_connection))
 
                     let LC = user.last_connection.split(" ").join("")
                     let LC2 = moment(LC)
@@ -52,9 +51,9 @@ class UserController{
                     let now2 = moment(now.split(" ").join(""))
 
                     let dif = now2.diff(LC2, 'days')
-                    console.log(`LC: ${LC2}; now: ${now2}`)
-                    console.log('diferencia: ', dif)
-                    console.log('User.email: : ', user.email)
+                    req.logger.info(`LC: ${LC2}; now: ${now2}`)
+                    req.logger.info('diferencia: ', dif)
+                    req.logger.info('User.email: : ', user.email)
                     if (dif > 2) {
                         await userService.deleteUser(user.email)
 
@@ -77,15 +76,15 @@ class UserController{
                             </div>`
                         })
 
-                        console.log(result)
+                        req.logger.info(result)
                     }
                 } catch (error) {
-                    console.log(error);
+                    req.logger.error(error);
                 }
             })
             res.send({status: "ok"})
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -105,11 +104,11 @@ class UserController{
                 if (!iden || !compDom || !compEsta) res.send({status: 'error', message: 'no cuenta con toda la documentacion subida'})
             }
             let newUser = await userService.updateRoll(uemail, `${req.session.premium ? 'premium' : 'user'}`)
-            console.log(req.session.premium)
+            req.logger.debug(req.session.premium)
             res.send({status: 'ok', data: newUser})
             
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -121,12 +120,12 @@ class UserController{
             let user = await userService.getUser(uemail)
             if (!user) res.send({status: 'error', message: 'El usuario no existe'})
 
-            console.log('roll: ', roll);
+            req.logger.info('roll: ', roll);
             let newuser = userService.updateRoll(uemail, roll) 
 
             res.send({status: "ok", data: newuser})
         } catch (error) {
-            console.log(error);
+            req.logger.error(error);
         }
     }
 
@@ -134,16 +133,15 @@ class UserController{
         const { email, password } = req.body
 
         try {
-            console.log('email: ', email)
+            req.logger.debug('email: ', email)
             let user = await userService.getUser(email)
 
-            console.log('user: ', user)
+            req.logger.info('user: ', user)
             if (isValidPassword(user, password)) res.send('no puede colocar la contraseña anterior')
-            console.log('logre pasar')
             await userService.updateUser(email, createHash(password))
             res.send({message: 'contraseña cambiada'})
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -157,7 +155,7 @@ class UserController{
                 res.render('changePassword')
             })
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -168,18 +166,18 @@ class UserController{
             if (!req.file) res.status(400).send({status: error, error: "No se pudo guardar la imagen"})
             
             let userData = await userService.getUser(uemail)
-            console.log('userData: ', userData)
+            req.logger.info('userData: ', userData)
             if (!userData.documents || userData.documents == []) {
                 let user = await userService.uploadDocument(uemail, [{name, reference: req.file.path}])
                 res.send({status: 'ok', link: req.file.path, user})
             }
             let documents = userData.documents
             documents.push({name, reference: req.file.path})
-            console.log('documents: ', documents)
+            req.logger.info('documents: ', documents)
             let user = await userService.uploadDocument(uemail, documents)
             res.send({status: 'ok', link: req.file.path, user})
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 }

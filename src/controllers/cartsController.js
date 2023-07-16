@@ -22,7 +22,7 @@ class CartsController {
             
             res.send(cartProducts)
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -35,7 +35,7 @@ class CartsController {
             res.send({mensaje: "producto agregado al carrito", payload: data})
 
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -48,7 +48,7 @@ class CartsController {
             res.send({mensaje: "producto eliminado del carrito", payload: data})
 
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -61,7 +61,7 @@ class CartsController {
             res.send({mensaje: "producto agregado al carrito"})
 
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -74,7 +74,7 @@ class CartsController {
             res.send({mensaje: "todos los productos eliminados del carrito"})
 
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -88,7 +88,7 @@ class CartsController {
             res.send({mensaje: "Array de productos agregado al carrito"})
 
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -113,7 +113,6 @@ class CartsController {
                     
                     amount += product.pid.price
                     req.logger.info('updateProduct: ', updateProduct)
-                    // console.log('updateProduct: ', updateProduct)
                     
                     await productsService.updateProduct(product.pid._id, updateProduct)
                     
@@ -125,21 +124,19 @@ class CartsController {
             
             await cartsService.arrayProductsUpdate(cid, sbProducts)
             req.logger.info('sbProducts: ', sbProducts)
-            console.log("sbProducts", sbProducts);
             let purchase_datetime = new Date()
 
             let purchaser = req.session.email || "prueba@gmail.com"
             req.logger.info(amount, purchaser, purchase_datetime)
-            console.log(amount, purchaser, purchase_datetime);
 
             let ticket = await ticketManager.createTicket(purchase_datetime, amount, purchaser)
-            console.log(ticket)
+            req.logger.info(ticket)
             res.send({
                 status: "success",
                 payload: ticket
             })
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 }

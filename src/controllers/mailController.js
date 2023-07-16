@@ -42,7 +42,7 @@ export class MailController {
     
             res.send({status: 'ok', data: result})
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 }

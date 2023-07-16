@@ -12,13 +12,13 @@ class ViewsController {
         query? filtro = {category: query} : filtro = {}
         try {
             const {docs, hasPrevPage, hasNextPage, prevPage, nextPage} = await viewsService.getProducts(limit, page, filtro)
-            console.log(req.session.email);
+            req.logger.debug(req.session.email)
             const user = await userService.getUser(req.session)
-            console.log(user);
+            req.logger.info(user);
             docs.forEach(product => {
                 product.cart = user.cart
-            });
-            console.log("docs: ", docs);
+            })
+            req.logger.info('docs: ', docs)
             let datos = {
                 productos: docs,
                 hasPrevPage,
@@ -33,18 +33,17 @@ class ViewsController {
             }
             res.render('home', datos)
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
     cartsRender = async (req = request, res) => {
         const {cid} = req.params
         const {limit = 1 , page = 1} = req.query
-        console.log(limit)
         try {
             const {docs, hasPrevPage, hasNextPage, prevPage, nextPage} = await viewsService.getCartProducts(cid, limit, page)
             let data = docs[0].products
-            console.log("data: ",data);
+            req.logger.info("data: ",data);
             let datos = {
                 productos: data,
                 hasPrevPage,
@@ -54,10 +53,10 @@ class ViewsController {
                 page,
                 limit
             }
-            console.log("datos: ", datos);
+            req.logger.info("datos: ", datos);
             res.render('carts', datos)
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 
@@ -81,13 +80,13 @@ class ViewsController {
                     roll: user.roll
                 })
             });
-            console.log(saveUsers);
+            req.logger.info(saveUsers);
             let data = {
                 usuarios: saveUsers
             }
             res.render('userMonitoring', data)
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 }

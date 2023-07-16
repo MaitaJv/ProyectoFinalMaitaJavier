@@ -7,6 +7,9 @@ class ProductsService {
     async getProducts(limit){
         return await mongoProductManager.getProducts(limit)
     }
+    async getProductsWithOutPaginate(){
+        return await mongoProductManager.getProductsWithOutPaginate()
+    }
 
     async getProductById(pid){
         return await mongoProductManager.getProductById(pid)

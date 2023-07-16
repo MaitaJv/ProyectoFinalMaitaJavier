@@ -70,25 +70,21 @@ export const initPassport = ()=>{
         },
         async (req, username, password, done) => {
             req.logger.info('login passport')
-            // console.log('login passport')
             try {
                 let user = await mongoUserManager.getUser(username)
                 req.logger.info(user)
-                // console.log(user)
                 if (!user) {
                     req.logger.error('usuario no existe')
-                    // console.log('usuario no existe')
                     return done(null, false)
                 }
 
                 if(!isValidPassword(user, password)){
                     req.logger.error('datos invalidos')
-                    // console.log('datos invalidos')
                     return done(null, false)
                 }
                 return done(null, user)
             } catch (error) {
-                console.log(error)
+                req.logger.error(error)
                 return done(error)
             }
         }
@@ -101,15 +97,15 @@ export const initPassport = ()=>{
         },
         async (req, username, password, done)=>{
             let { first_name, last_name, age, roll = 'user', email } = req.body
-            console.log('username: ',username);
-            console.log('password: ',password);
+            req.logger.info('username: ',username);
+            req.logger.info('password: ',password);
             if (username == config.adminName && password == config.adminPassword) roll = 'admin'
             try {
                 
                 let exist = await mongoUserManager.getUser(username)
                 
                 if(exist) {
-                    console.log('el usuario ya existe')
+                    req.logger.warning('el usuario ya existe')
                     return done(null, false)
                 }else{
                     let cart = await mongoCartManager.createCart()
@@ -118,11 +114,11 @@ export const initPassport = ()=>{
 
                     let result = await mongoUserManager.addUser(user)
                     
-                    console.log('el usuario se creo correctamente: ', result)
+                    req.logger.info('el usuario se creo correctamente: ', result)
                     return done(null, result)
                 }
             } catch (error) {
-                console.log(error)
+                req.logger.error(error)
                 return done('Error al obrener el usuario'+error)
             }
         }

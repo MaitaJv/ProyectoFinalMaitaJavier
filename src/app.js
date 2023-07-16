@@ -17,6 +17,7 @@ import paymentRouter from './routes/payment.js'
 
 import __dirname from './utils.js'
 import { ProductManager } from './dao/fileSystem/productManager.js'
+import ProductsService from './services/productsService.js'
 import dbConnection from './config/dbConnection.js'
 import chatModel from "./dao/mongo/models/chat.js"
 import { initPassport } from './config/passport.js'
@@ -32,6 +33,7 @@ const PORT = 8080
 dbConnection()
 
 const productManager = new ProductManager
+const productsService = new ProductsService
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -97,7 +99,8 @@ let mensajes
 socketServer.on('connection', async socket => {
     console.log('Nuevo cliente conectado')
     try {
-        productos = await productManager.getProducts()
+        productos = await productsService.getProductsWithOutPaginate()
+        console.log(productos);
         mensajes = await chatModel.find()
         socket.emit('mensajeServer', productos)
         socket.emit('mensajesChat', mensajes)
@@ -119,8 +122,8 @@ socketServer.on('connection', async socket => {
             thumbnail
         } = data
 
-        if (title == '' || description == '' || code == '' || price == '' || status == '' || stock == '' || category == '') {
-            console.log('todo mal');
+        if (!title || !description || !code || !price || !status || !stock || !category) {
+            console.log('datos invalidos')
         }else{
             try {
                 await productManager.addProduct(title, description, price, thumbnail, code, stock, status, category)

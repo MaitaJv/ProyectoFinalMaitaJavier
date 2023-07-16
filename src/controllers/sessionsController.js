@@ -8,10 +8,10 @@ class SessionsController {
         try {
             let email = req.session.email
             let user = await userService.getUser(email)
-            console.log(user)
+            req.logger.info(user)
             res.send(user)
         } catch (error) {
-            console.log(error)
+            req.logger.error(error)
         }
     }
 }

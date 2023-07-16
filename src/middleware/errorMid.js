@@ -1,7 +1,7 @@
 import EErrors from "../errors/enum.js";
 
 export default (error, req, res, next)=>{
-    console.log(error.cause);
+    req.logger.error(error.cause);
     switch (error.code) {
         case EErrors.INVALID_PROPERTIES:
             res.send({status: 'error', error: error.name})
