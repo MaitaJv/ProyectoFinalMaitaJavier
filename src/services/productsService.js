@@ -1,8 +1,10 @@
 import { MongoProductManager } from "../dao/mongo/mongoProductManager.js";
 import {ProductsDTO} from "../DTO/productsDTO.js";
+import UserService from "./userService.js";
 const productsDTO = new ProductsDTO()
 const mongoProductManager = new MongoProductManager
 
+const userService = new UserService
 class ProductsService {
     async getProducts(limit){
         return await mongoProductManager.getProducts(limit)
@@ -15,8 +17,13 @@ class ProductsService {
         return await mongoProductManager.getProductById(pid)
     }
 
-    async addProduct({title, description, price, thumbnail, code, stock, status, category}){
-        let product = await productsDTO.addProduct({title, description, price, thumbnail, code, stock, status, category})
+    async addProduct({title, description, price, thumbnail, code, stock, category, owner}){
+        let user = await userService.getUser(owner)
+        if (!user) {
+            console.log('el usuario no existe');
+            return -1
+        }
+        let product = await productsDTO.addProduct({title, description, price, thumbnail, code, stock, category, owner})
         console.log("producto: ",product)
         return await mongoProductManager.addProduct(product)
     }

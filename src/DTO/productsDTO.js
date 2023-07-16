@@ -1,5 +1,5 @@
 export class ProductsDTO{
-    addProduct = async ({title, description, price, thumbnail, code, stock, status, category}) =>{
+    addProduct = async ({title, description, price, thumbnail, code, stock, category, owner}) =>{
         let product = {
             title,
             description,
@@ -7,8 +7,8 @@ export class ProductsDTO{
             thumbnail,
             code,
             stock,
-            status,
-            category
+            category,
+            owner
         }
         return product
     }

@@ -116,18 +116,18 @@ socketServer.on('connection', async socket => {
             description,
             code,
             price,
-            status,
             stock,
             category,
-            thumbnail
+            thumbnail,
+            owner
         } = data
 
-        if (!title || !description || !code || !price || !status || !stock || !category) {
+        if (!title || !description || !code || !price || !stock || !category || !owner) {
             console.log('datos invalidos')
         }else{
             try {
-                await productManager.addProduct(title, description, price, thumbnail, code, stock, status, category)
-                let datos = await productManager.getProducts()
+                await productsService.addProduct({title, description, price, thumbnail, code, stock, category, owner})
+                let datos = await productsService.getProductsWithOutPaginate()
                 socketServer.emit('productoAgregado', datos)
             } catch (error) {
                 console.log(error)
@@ -137,8 +137,8 @@ socketServer.on('connection', async socket => {
 
     socket.on('deleteProduct', async data => {
         try {
-            await productManager.deleteProduct(data)
-            let datos = await productManager.getProducts()
+            await productsService.deleteProduct(data)
+            let datos = await productsService.getProductsWithOutPaginate()
             socketServer.emit('prodcutoEliminado', datos)
         } catch (error) {
             console.log(error)
