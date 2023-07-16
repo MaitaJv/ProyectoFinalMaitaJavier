@@ -6,9 +6,11 @@ const router = Router()
 const userController = new UserController
 
 router.get('/', userController.getusers)
-router.delete('/', userController.deleteUser)
+router.delete('/', userController.deleteUsers)
+router.post('/:uemail', userController.deleteUser)
 router.get('/premium/:uemail', userController.rollSwitch)
 router.get('/changePassword/:token', userController.renderChangePassword)
+router.post('/changeRoll/:uemail', userController.changeRoll)
 router.post('/:uemail/documents', uploader.single('file'), userController.uploadDocument)
 router.post('/changePassword', userController.changePassword)
 

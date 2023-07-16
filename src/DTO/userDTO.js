@@ -22,7 +22,7 @@ export class UserDTO {
     }
     async userByEmail(email){
         return {
-            email: email.email
+            email: email.email || email
         }
     }
 }

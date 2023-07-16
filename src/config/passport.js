@@ -43,13 +43,15 @@ export const initPassport = ()=>{
             let user = await userService.getUser({email: profile._json.email})
             console.log(profile._json.email);
             if (!user) {
+                let cart = await mongoCartManager.createCart()
                 let newUser = {
                     first_name: profile.username,
                     last_name: profile.username,
                     age: 18,
                     roll: 'user',
                     email: profile._json.email,
-                    password: '1234'
+                    password: '1234',
+                    cart: cart._id
                 }
                 let result= await userService.addUser(newUser)
                 return done(null, result)
@@ -98,7 +100,7 @@ export const initPassport = ()=>{
             usernameField: 'email',
         },
         async (req, username, password, done)=>{
-            const { first_name, last_name, age, roll = 'user', email } = req.body
+            let { first_name, last_name, age, roll = 'user', email } = req.body
             console.log('username: ',username);
             console.log('password: ',password);
             if (username == config.adminName && password == config.adminPassword) roll = 'admin'

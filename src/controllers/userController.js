@@ -30,9 +30,19 @@ class UserController{
     }
 
     deleteUser = async (req = request, res) => {
+        const {uemail} = req.params
         try {
-            let user = await userService.getUsers()
-            user.forEach(async user => {
+            await userService.deleteUser(uemail)
+            res.send({status: "ok"})
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    deleteUsers = async (req = request, res) => {
+        try {
+            let users = await userService.getUsers()
+            users.forEach(async user => {
                 try {
                     console.log("user.last_connection: ", user.last_connection, "TypeOf: ", typeof(user.last_connection))
 
@@ -100,6 +110,23 @@ class UserController{
             
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    changeRoll = async (req = request, res) => {
+        const {uemail} = req.params
+        const {roll} = req.body
+
+        try {
+            let user = await userService.getUser(uemail)
+            if (!user) res.send({status: 'error', message: 'El usuario no existe'})
+
+            console.log('roll: ', roll);
+            let newuser = userService.updateRoll(uemail, roll) 
+
+            res.send({status: "ok", data: newuser})
+        } catch (error) {
+            console.log(error);
         }
     }
 
