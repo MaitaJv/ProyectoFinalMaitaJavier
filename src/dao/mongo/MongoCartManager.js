@@ -18,7 +18,7 @@ export class MongoCartManager {
             let product = carrito.products.find(product => product.pid == pid)
     
             if (product !== undefined) {
-                return await cartsModel.updateOne(
+                await cartsModel.updateOne(
                     {
                         _id: cid
                     },
@@ -35,10 +35,12 @@ export class MongoCartManager {
                         ]
                     }
                 )
+                return await cartsModel.find({_id: cid})
             }
     
             if (product == undefined) {
-                return await cartsModel.findByIdAndUpdate(cid, {$push: {'products': {pid: pid, quantity : 1}}})
+                await cartsModel.findByIdAndUpdate(cid, {$push: {'products': {pid: pid, quantity : 1}}})
+                return await cartsModel.find({_id: cid})
             }
         } catch (error) {
             console.log(error)
@@ -56,15 +58,17 @@ export class MongoCartManager {
 
     async deleteProduct(cid, pid){
         try {
-            let carrito = await cartsModel.findOne({cid: cid})
+            console.log(`cid: ${cid}, pid: ${pid}`)
+            let carrito = await cartsModel.findOne({_id: cid})
     
             let products = carrito.products.filter(product => product.pid != pid)
 
-            console.log(products)
+            console.log('carrito: ', carrito)
+            console.log('products: ', products)
 
-            return await cartsModel.updateOne(
+            await cartsModel.updateOne(
                 {
-                    cid: cid
+                    _id: cid
                 },
                 {
                     $set:
@@ -73,6 +77,8 @@ export class MongoCartManager {
                     }
                 }
             )
+
+            return await cartsModel.find({_id: cid})
         } catch (error) {
             console.log(error)
         }

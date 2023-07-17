@@ -314,3 +314,76 @@
 {"level":"info","message":"last_connection: "}
 {"level":"info","message":{"__v":0,"_id":"64b4c553e5c59c110b456783","age":18,"cart":"64b4b6c341ee517708880f5a","documents":[],"email":"javiermaita@hotmail.com.ar","first_name":"MaitaJv","last_connection":"2023 07 17","last_name":"MaitaJv","password":"$2b$10$wmYL1Be06uySYHY4xmJ6pu4squy7w9C98iIeuTMpQTCgKmw0h7oP.","roll":"premium"}}
 {"0":{"__v":0,"_id":"64010a6571f4e310587dbb00","cart":"64b4b6c341ee517708880f5a","category":"mails","code":600,"description":"Producto para Mongo","id":"64010a6571f4e310587dbb00","price":1500,"status":"true","stock":4,"thumbnail":"link","title":"Remplazo para Mongo"},"level":"info","message":"docs: "}
+{"level":"info","message":"login passport"}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"level":"warning","message":"usted es admin"}
+{"level":"info","message":"last_connection: "}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"__v":0,"_id":"64010a6571f4e310587dbb00","cart":"64b38d3a22a55b0e16481d08","category":"mails","code":600,"description":"Producto para Mongo","id":"64010a6571f4e310587dbb00","price":1500,"status":"true","stock":4,"thumbnail":"link","title":"Remplazo para Mongo"},"level":"info","message":"docs: "}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"__v":0,"_id":"64010a6571f4e310587dbb00","category":"mails","code":600,"description":"Producto para Mongo","owner":"admin","price":1500,"status":"true","stock":4,"thumbnail":"link","title":"Remplazo para Mongo"}}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"__v":0,"_id":"64010a6571f4e310587dbb00","category":"mails","code":600,"description":"Producto para Mongo","owner":"admin","price":1500,"status":"true","stock":4,"thumbnail":"link","title":"Remplazo para Mongo"}}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"__v":0,"_id":"64010a6571f4e310587dbb00","category":"mails","code":600,"description":"Producto para Mongo","owner":"admin","price":1500,"status":"true","stock":4,"thumbnail":"link","title":"Remplazo para Mongo"}}
+{"level":"info","message":"login passport"}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"level":"warning","message":"usted es admin"}
+{"level":"info","message":"last_connection: "}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"__v":0,"_id":"64010a6571f4e310587dbb00","cart":"64b38d3a22a55b0e16481d08","category":"mails","code":600,"description":"Producto para Mongo","id":"64010a6571f4e310587dbb00","price":1500,"status":"true","stock":4,"thumbnail":"link","title":"Remplazo para Mongo"},"level":"info","message":"docs: "}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"__v":0,"_id":"64029485d2af530810fc3a47","cart":"64b38d3a22a55b0e16481d08","category":"Coputacion","code":100,"description":"Este es el producto 1","id":"64029485d2af530810fc3a47","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"},"level":"info","message":"docs: "}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"__v":0,"_id":"64029485d2af530810fc3a47","category":"Coputacion","code":100,"description":"Este es el producto 1","owner":"admin","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"}}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"__v":0,"_id":"64029485d2af530810fc3a47","cart":"64b38d3a22a55b0e16481d08","category":"Coputacion","code":100,"description":"Este es el producto 1","id":"64029485d2af530810fc3a47","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"},"level":"info","message":"docs: "}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"__v":0,"_id":"64029485d2af530810fc3a47","category":"Coputacion","code":100,"description":"Este es el producto 1","owner":"admin","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"}}
+{"level":"info","message":"login passport"}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"level":"warning","message":"usted es admin"}
+{"level":"info","message":"last_connection: "}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"__v":0,"_id":"64010a6571f4e310587dbb00","cart":"64b38d3a22a55b0e16481d08","category":"mails","code":600,"description":"Producto para Mongo","id":"64010a6571f4e310587dbb00","price":1500,"status":"true","stock":4,"thumbnail":"link","title":"Remplazo para Mongo"},"level":"info","message":"docs: "}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"__v":0,"_id":"64029485d2af530810fc3a47","cart":"64b38d3a22a55b0e16481d08","category":"Coputacion","code":100,"description":"Este es el producto 1","id":"64029485d2af530810fc3a47","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"},"level":"info","message":"docs: "}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"_id":"6403c1aea1d7439915beb78c","cart":"64b38d3a22a55b0e16481d08","category":"mails","code":600,"description":"Producto para Mongo","id":"6403c1aea1d7439915beb78c","price":1500,"status":"true","stock":15,"thumbnail":"link","title":"Remplazo producto 10"},"level":"info","message":"docs: "}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"_id":"6403c1aea1d7439915beb78c","category":"mails","code":600,"description":"Producto para Mongo","owner":"admin","price":1500,"status":"true","stock":15,"thumbnail":"link","title":"Remplazo producto 10"}}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"_id":"6403c1aea1d7439915beb78c","cart":"64b38d3a22a55b0e16481d08","category":"mails","code":600,"description":"Producto para Mongo","id":"6403c1aea1d7439915beb78c","price":1500,"status":"true","stock":15,"thumbnail":"link","title":"Remplazo producto 10"},"level":"info","message":"docs: "}
+{"level":"info","message":"login passport"}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"level":"warning","message":"usted es admin"}
+{"level":"info","message":"last_connection: "}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"__v":0,"_id":"64010a6571f4e310587dbb00","cart":"64b38d3a22a55b0e16481d08","category":"mails","code":600,"description":"Producto para Mongo","id":"64010a6571f4e310587dbb00","price":1500,"status":"true","stock":4,"thumbnail":"link","title":"Remplazo para Mongo"},"level":"info","message":"docs: "}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"__v":0,"_id":"64029485d2af530810fc3a47","cart":"64b38d3a22a55b0e16481d08","category":"Coputacion","code":100,"description":"Este es el producto 1","id":"64029485d2af530810fc3a47","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"},"level":"info","message":"docs: "}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"__v":0,"_id":"64029485d2af530810fc3a47","category":"Coputacion","code":100,"description":"Este es el producto 1","owner":"admin","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"}}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"__v":0,"_id":"64029485d2af530810fc3a47","category":"Coputacion","code":100,"description":"Este es el producto 1","owner":"admin","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"}}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"__v":0,"_id":"64029485d2af530810fc3a47","category":"Coputacion","code":100,"description":"Este es el producto 1","owner":"admin","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"}}
+{"level":"info","message":"cid: 64b38d3a22a55b0e16481d08, pid: 64b4d1044402a351c4e4ef0a"}
+{"level":"info","message":"cid: 64b38d3a22a55b0e16481d08, pid: 64b4d1044402a351c4e4ef0a"}
+{"level":"info","message":"cid: 64b38d3a22a55b0e16481d08, pid: 64b4d1044402a351c4e4ef0a"}
+{"level":"info","message":"cid: 64b38d3a22a55b0e16481d08, pid: 64029485d2af530810fc3a47"}
+{"level":"info","message":"cid: 64b38d3a22a55b0e16481d08, pid: 64029485d2af530810fc3a47"}
+{"level":"info","message":"cid: 64b38d3a22a55b0e16481d08, pid: 64029485d2af530810fc3a47"}
+{"level":"info","message":"login passport"}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"level":"warning","message":"usted es admin"}
+{"level":"info","message":"last_connection: "}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"__v":0,"_id":"64010a6571f4e310587dbb00","cart":"64b38d3a22a55b0e16481d08","category":"mails","code":600,"description":"Producto para Mongo","id":"64010a6571f4e310587dbb00","price":1500,"status":"true","stock":4,"thumbnail":"link","title":"Remplazo para Mongo"},"level":"info","message":"docs: "}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"__v":0,"_id":"64010a6571f4e310587dbb00","category":"mails","code":600,"description":"Producto para Mongo","owner":"admin","price":1500,"status":"true","stock":4,"thumbnail":"link","title":"Remplazo para Mongo"}}
+{"level":"info","message":{"__v":0,"_id":"64b38d3b22a55b0e16481d0a","age":20,"cart":"64b38d3a22a55b0e16481d08","documents":[],"email":"adminCoder@coder.com","first_name":"Coder","last_connection":"2023 07 17","last_name":"House","password":"$2b$10$/Fm6G8CeXLB0gFIEA8Kee.zlBaC2iJuFF3ciNO1us4HBNHh5sogRO","roll":"admin"}}
+{"0":{"__v":0,"_id":"64029485d2af530810fc3a47","cart":"64b38d3a22a55b0e16481d08","category":"Coputacion","code":100,"description":"Este es el producto 1","id":"64029485d2af530810fc3a47","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"},"level":"info","message":"docs: "}
+{"level":"info","message":"----------product------------"}
+{"level":"info","message":{"__v":0,"_id":"64029485d2af530810fc3a47","category":"Coputacion","code":100,"description":"Este es el producto 1","owner":"admin","price":1000,"status":"true","stock":894,"thumbnail":"imagen","title":"Producto 1"}}
+{"level":"info","message":"cid: 64b38d3a22a55b0e16481d08, pid: 64029485d2af530810fc3a47"}

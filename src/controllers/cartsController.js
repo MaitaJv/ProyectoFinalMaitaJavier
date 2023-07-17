@@ -41,7 +41,7 @@ class CartsController {
 
     deleteProduct = async (req = request, res) => {
         const { cid, pid } = req.params
-
+        req.logger.info(`cid: ${cid}, pid: ${pid}`)
         try {
             let data = await cartsService.deleteProduct(cid, pid)
 
