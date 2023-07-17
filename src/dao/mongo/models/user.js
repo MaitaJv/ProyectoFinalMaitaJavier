@@ -30,8 +30,7 @@ const userSchema = Schema({
         require: true
     },
     password:{
-        type: String,
-        required: true
+        type: String
     },
     documents:{
         type: [{

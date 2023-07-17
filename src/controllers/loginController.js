@@ -27,12 +27,24 @@ class LoginController {
         try {
             
             if (username !== config.adminName || password !== config.adminPassword) {
+                let user = await userService.getUser(username)
                 req.session.user = username
                 req.session.email = username
-                req.session.admin = false
-                req.session.premium = false
-                req.session.usuario = true
-                req.logger.info('usted es usuario')
+                if (user.roll == 'admin') {
+                    req.session.admin = true
+                    req.session.premium = false
+                    req.session.usuario = false
+                }
+                if (user.roll == 'premium') {
+                    req.session.admin = false
+                    req.session.premium = true
+                    req.session.usuario = false
+                }
+                if (user.roll == 'user') {
+                    req.session.admin = false
+                    req.session.premium = false
+                    req.session.usuario = true
+                }
                 let last_connection = moment().format("YYYY MM DD");
                 req.logger.info("last_connection: ", last_connection);
                 await userService.updateLastConnection(username, last_connection.toString())
@@ -50,7 +62,7 @@ class LoginController {
                 res.redirect('http://localhost:8080/products')
             }
         } catch (error) {
-            req.logger.error(error)
+            console.log(error)
         }
     }
 

@@ -1,5 +1,5 @@
 export function auth (req, res, next){
-    if (req.session?.usuario || req.session?.admin ) {
+    if (req.session?.usuario || req.session?.admin || req.session?.premium ) {
         return next()
     }
     return res.status(401).send('Inicie Sesion')

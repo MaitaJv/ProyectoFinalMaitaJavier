@@ -131,17 +131,21 @@ class UserController{
 
     changePassword = async (req = request, res) => {
         const { email, password } = req.body
-
         try {
             req.logger.debug('email: ', email)
             let user = await userService.getUser(email)
-
             req.logger.info('user: ', user)
-            if (isValidPassword(user, password)) res.send('no puede colocar la contraseña anterior')
+
+            if(!user.password) {
+                await userService.updateUser(email, createHash(password))
+                return res.send({message: 'contraseña cambiada'})
+            }
+            
+            if (isValidPassword(user, password)) return res.send('no puede colocar la contraseña anterior')
             await userService.updateUser(email, createHash(password))
-            res.send({message: 'contraseña cambiada'})
+            return res.send({message: 'contraseña cambiada'})
         } catch (error) {
-            req.logger.error(error)
+            console.log(error)
         }
     }
 

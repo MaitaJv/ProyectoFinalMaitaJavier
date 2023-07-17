@@ -5,10 +5,10 @@ export const generateProductErrorInfo = (product)=>{
         - description: needs to be a String, recived: ${product.description}
         - code: needs to be a Number, recived: ${product.code}
         - price: needs to be a Number, recived: ${product.price}
-        - status: needs to be a String, recived: ${product.status}
         - stock: needs to be a Number, recived: ${product.stock}
         - category: needs to be a String, recived: ${product.category}
-        - thumbnail: needs to be a String, recived: ${product.thumbnail}`
+        - thumbnail: needs to be a String, recived: ${product.thumbnail}
+        - owner: needs to be a String, recived: ${product.owner}`
 }
 
 export const generateCartProductErrorInfo = (pid)=>{

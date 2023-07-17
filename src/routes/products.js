@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { vali } from "../middleware/validation.js"
-import { rollAdminVerify, rollDeleteVerify } from "../middleware/rollVerify.js"
+import { rollAdminVerify, importanRollVerify } from "../middleware/rollVerify.js"
 import ProductsController from "../controllers/productsController.js"
 
 const router = Router()
@@ -11,12 +11,10 @@ router.get('/', productsController.getProducts)
 
 router.get('/:pid', productsController.getProductById)
 
-// router.post('/', rollAdminVerify, vali, productsController.addProduct)
-router.post('/', vali, productsController.addProduct)
+router.post('/', importanRollVerify, vali, productsController.addProduct)
 
-router.put('/:pid', vali, productsController.updateProduct)
+router.put('/:pid', importanRollVerify, vali, productsController.updateProduct)
 
-router.delete('/:pid', rollDeleteVerify, productsController.delete)
-// router.delete('/:pid', productsController.delete)
+router.delete('/:pid', importanRollVerify, productsController.delete)
 
 export default router

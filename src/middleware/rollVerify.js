@@ -15,7 +15,7 @@ export function rollUserVerify(req, res, next) {
     return res.status(401).send('Usted no es usuario')
 }
 
-export function rollDeleteVerify(req, res, next) {
+export function importanRollVerify(req, res, next) {
     if (req.session?.admin) return next()
     if (req.session?.premium) return next()
     return res.status(401).send('Usted no tiene permisos')

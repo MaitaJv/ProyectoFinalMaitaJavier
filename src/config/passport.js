@@ -50,7 +50,6 @@ export const initPassport = ()=>{
                     age: 18,
                     roll: 'user',
                     email: profile._json.email,
-                    password: '1234',
                     cart: cart._id
                 }
                 let result= await userService.addUser(newUser)
@@ -79,12 +78,12 @@ export const initPassport = ()=>{
                 }
 
                 if(!isValidPassword(user, password)){
-                    req.logger.error('datos invalidos')
+                    console.log('datos invalidos')
                     return done(null, false)
                 }
                 return done(null, user)
             } catch (error) {
-                req.logger.error(error)
+                console.log(error)
                 return done(error)
             }
         }

@@ -11,7 +11,7 @@ router.post('/:uemail', userController.deleteUser)
 router.get('/premium/:uemail', userController.rollSwitch)
 router.get('/changePassword/:token', userController.renderChangePassword)
 router.post('/changeRoll/:uemail', userController.changeRoll)
+router.post('/changeUser/Password', userController.changePassword)
 router.post('/:uemail/documents', uploader.single('file'), userController.uploadDocument)
-router.post('/changePassword', userController.changePassword)
 
 export default router

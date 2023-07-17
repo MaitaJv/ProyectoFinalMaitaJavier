@@ -20,7 +20,7 @@ class ProductsService {
     async addProduct({title, description, price, thumbnail, code, stock, category, owner}){
         let user = await userService.getUser(owner)
         if (!user) {
-            console.log('el usuario no existe');
+            console.log('el usuario no se encuentra registrado por lo que no puede ser dueño de este producto')
             return -1
         }
         let product = await productsDTO.addProduct({title, description, price, thumbnail, code, stock, category, owner})
