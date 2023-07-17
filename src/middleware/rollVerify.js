@@ -4,7 +4,7 @@ export function rollAdminVerify(req, res, next) {
 }
 
 export function rollPremiumVerify(req, res, next) {
-    if (req.session?.premium) return res.status(401).send('Usted no puede adquirir su propio producto')
+    if (req.session?.premium) return res.status(401).send('Usted no puede adquirir')
     return next()
 }
 

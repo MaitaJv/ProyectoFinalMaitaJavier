@@ -111,7 +111,7 @@ class CartsController {
                     
                     updateProduct.stock = updateProduct.stock - product.quantity
                     
-                    amount += product.pid.price
+                    amount += product.pid.price * product.quantity
                     req.logger.info('updateProduct: ', updateProduct)
                     
                     await productsService.updateProduct(product.pid._id, updateProduct)
@@ -127,10 +127,10 @@ class CartsController {
             let purchase_datetime = new Date()
 
             let purchaser = req.session.email || "prueba@gmail.com"
-            req.logger.info(amount, purchaser, purchase_datetime)
+            console.log('cosas:', amount, purchaser, purchase_datetime.toString())
 
-            let ticket = await ticketManager.createTicket(purchase_datetime, amount, purchaser)
-            req.logger.info(ticket)
+            let ticket = await ticketManager.createTicket(purchase_datetime.toString(), amount, purchaser)
+            console.log('ticket: ', ticket)
             res.send({
                 status: "success",
                 payload: ticket

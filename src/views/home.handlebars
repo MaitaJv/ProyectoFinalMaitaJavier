@@ -25,6 +25,7 @@
                         <p>{{this.description}}</p>
                         <p>Categoria: {{this.category}}</p>
                         <p>Stock: {{this.stock}}</p>
+                        <p>${{this.price}}</p>
                     </div>
                 </div>
                 <form action="../api/carts/{{cart}}/product/{{this._id}}" method="post">
