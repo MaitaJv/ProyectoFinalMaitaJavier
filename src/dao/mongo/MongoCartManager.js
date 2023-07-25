@@ -47,6 +47,15 @@ export class MongoCartManager {
         }
     }
 
+    async getAllCartProducts(cid){
+        try {
+            const cartProducts = await cartsModel.find({_id: cid})
+            return cartProducts
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     async getCartProducts(cid, limit, page){
         try {
             const cartProducts = await cartsModel.paginate({_id: cid}, {limit: limit, page: page, lean: true})

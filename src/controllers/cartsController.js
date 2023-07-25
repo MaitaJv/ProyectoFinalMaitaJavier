@@ -94,42 +94,9 @@ class CartsController {
 
     createTicket = async(req = request, res) => {
         const { cid } = req.params
-        const {limit = 1 , page = 1, query} = req.query
 
         try {
-            let sbProducts = []
-            let amount = 0
-
-            const cartProducts = await cartsService.getCartProducts(cid, limit, page)
-
-            if(!cartProducts) return res.status(401).send({status: 'error', error:  cartProducts})
-            for (const product of cartProducts.docs[0].products) {
-                
-                if (product.quantity < product.pid.stock) {
-                    
-                    let updateProduct = product.pid
-                    
-                    updateProduct.stock = updateProduct.stock - product.quantity
-                    
-                    amount += product.pid.price * product.quantity
-                    req.logger.info('updateProduct: ', updateProduct)
-                    
-                    await productsService.updateProduct(product.pid._id, updateProduct)
-                    
-                }else{
-                    sbProducts.push(product)
-                }
-            }
-            if(sbProducts.length == cartProducts.docs[0].products.length) return res.status(401).send({status: 'error', error:  sbProducts})
-            
-            await cartsService.arrayProductsUpdate(cid, sbProducts)
-            req.logger.info('sbProducts: ', sbProducts)
-            let purchase_datetime = new Date()
-
-            let purchaser = req.session.email || "prueba@gmail.com"
-            console.log('cosas:', amount, purchaser, purchase_datetime.toString())
-
-            let ticket = await ticketManager.createTicket(purchase_datetime.toString(), amount, purchaser)
+            let ticket = await ticketManager.createTicket(cid, req.session.email)
             console.log('ticket: ', ticket)
             res.send({
                 status: "success",

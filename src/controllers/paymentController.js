@@ -2,9 +2,11 @@ import { request } from "express";
 import PaymentService from '../ultis/stripe.js'
 import UserService from "../services/userService.js";
 import CartsService from "../services/cartsService.js";
+import TicketService from "../services/ticketService.js";
 
 const userService = new UserService
 const cartsService = new CartsService
+const ticketService = new TicketService
 
 class PaymentController{
 
@@ -12,16 +14,16 @@ class PaymentController{
         try {
             let user = await userService.getUser(req.session)
             
-            // const {docs} = await cartsService.getCartProducts(user.cart, limit = 1, page = 1)
-            // let data = docs[0].products
+            let ticket = await ticketService.createTicket(user.cart, user.email)
+            req.logger.info(ticket)
             const paymentIntentInfo = {
-                amount: 1000,
+                amount: ticket.amount,
                 currency: 'usd'
             }
         
             const service = new PaymentService()
             let result = await service.createPaymentIntent(paymentIntentInfo)
-            req.logger.info(result)
+            console.log("result: ", result)
             res.send({status: 'success',payload: result})
         } catch (error) {
             req.logger.error(error);
